@@ -1,0 +1,22 @@
+
+name: My First GitHub Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  practice:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print a message
+        run: echo "Hello! My first GitHub Actions workflow is running!"
+
+      - name: Check Linux version
+        run: uname -a
