@@ -9,14 +9,14 @@ on:
 
 jobs:
   practice:
+      practice:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    env:
+      APP_NAME: github-actions-practice
 
-      - name: Print a message
-        run: echo "Hello! My first GitHub Actions workflow is running!"
+      - name: Display environment variable
+        run: echo "Application name is $APP_NAME"
 
       - name: Check Linux version
         run: uname -a
