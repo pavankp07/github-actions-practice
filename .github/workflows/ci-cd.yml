@@ -54,3 +54,13 @@ jobs:
       - name: Run only on main branch
         if: github.ref == 'refs/heads/main'
         run: echo "This step runs only on the main branch!"
+  
+  matrix-practice:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        number: [1, 2, 3]
+
+    steps:
+      - name: Display matrix value
+        run: echo "Running matrix job number ${{ matrix.number }}"
