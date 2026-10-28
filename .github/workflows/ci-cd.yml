@@ -67,3 +67,14 @@ jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-build.yml
 
+  artifact-practice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create demo file
+        run: echo "Hello from GitHub Actions!" > demo.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-demo-artifact
+          path: demo.txt
