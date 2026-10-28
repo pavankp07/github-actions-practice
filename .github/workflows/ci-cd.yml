@@ -64,3 +64,6 @@ jobs:
     steps:
       - name: Display matrix value
         run: echo "Running matrix job number ${{ matrix.number }}"
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-build.yml
+
