@@ -78,3 +78,15 @@ jobs:
         with:
           name: my-demo-artifact
           path: demo.txt
+
+  artifact-download-practice:
+    needs: artifact-practice
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-demo-artifact
+
+      - name: Display downloaded file
+        run: cat demo.txt
