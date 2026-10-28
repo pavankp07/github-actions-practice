@@ -1,5 +1,5 @@
 
-name: My First GitHub Actions Workflow
+name: GitHub Actions Practice
 
 on:
   push:
@@ -8,17 +8,34 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build application
+        run: echo "Building application..."
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: echo "Tests passed!"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy application
+        run: echo "Deployment successful!"
+
   practice:
+    needs: deploy
     runs-on: ubuntu-latest
     env:
       APP_NAME: github-actions-practice
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Print a message
-        run: echo "Hello! My first GitHub Actions workflow is running!"
 
       - name: Display environment variable
         run: echo "Application name is $APP_NAME"
@@ -33,6 +50,3 @@ jobs:
             echo "Demo secret is missing!"
             exit 1
           fi
-
-      - name: Check Linux version
-        run: uname -a
