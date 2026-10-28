@@ -50,3 +50,7 @@ jobs:
             echo "Demo secret is missing!"
             exit 1
           fi
+
+      - name: Run only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This step runs only on the main branch!"
